@@ -23,7 +23,7 @@ const SIZES = {
 const Button = ({ color, children }) => {
     const styles = SIZES[small];
   
-    let Component = ButtonBase
+    let Component = FillButton
     return <Component color={color} style={styles}>{children}</Component>;
 
   };
@@ -34,11 +34,19 @@ const ButtonBase = styled.button`
   padding: var(--padding);
   border-radius: var(--borderRadius);
   border: 2px solid transparent;
-  color: ${({ props }) => handleColorType(props.color)};
 
   &:focus {
     outline-color: ${COLORS.primary};
     outline-offset: 4px;
+  }
+`;
+
+const FillButton = styled(ButtonBase)`
+  background-color: ${({ props }) => handleColorType(props.color)};
+  color: ${COLORS.white};
+
+  &:hover {
+    opacity: 0.80;
   }
 `;
 
