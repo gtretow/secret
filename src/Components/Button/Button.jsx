@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import { COLORS } from "../../styles/Constants";
 
@@ -20,8 +21,8 @@ const SIZES = {
   },
 };
 
-const Button = ({ color, children }) => {
-  const styles = SIZES[small];
+const Button = ({ color = "", children }) => {
+  const styles = SIZES["small"];
 
   let Component = FillButton;
   return (
@@ -33,10 +34,10 @@ const Button = ({ color, children }) => {
 
 const ButtonBase = styled.button`
   font-size: var(--fontSize);
-  font-family: "Roboto", sans-serif;
   padding: var(--padding);
   border-radius: var(--borderRadius);
   border: 2px solid transparent;
+  border-radius: 7px;
 
   &:focus {
     outline-color: ${COLORS.primary};
@@ -45,8 +46,9 @@ const ButtonBase = styled.button`
 `;
 
 const FillButton = styled(ButtonBase)`
-  background-color: ${({ props }) => handleColorType(props.color)};
+  background-color: ${({ color }) => handleColorType(color)};
   color: ${COLORS.white};
+  width: 8rem;
 
   &:hover {
     opacity: 0.8;

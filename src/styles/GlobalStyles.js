@@ -1,6 +1,6 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
-const GlobalStyles = createGlobalStyle`
+export default createGlobalStyle`
     *, *::before, *::after {
         box-sizing: border-box;
     }
@@ -11,6 +11,8 @@ const GlobalStyles = createGlobalStyle`
     
     html, body {
         height: 100%;
+        font-family: Roboto Arial, Helvetica, sans-serif;
+
     }
     
     body {
@@ -34,4 +36,5 @@ const GlobalStyles = createGlobalStyle`
     #root, #__next {
         isolation: isolate;
     }
-  `
+
+  `;

@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
-import SignUp from "./Pages/SignUp/SignUp";
-import MainScreen from "./Pages/MainScreen/MainScreen";
+import SignUp from "./Pages/SignUp/SignUp.jsx";
+import MainScreen from "./Pages/MainScreen/MainScreen.jsx";
 
 const AppRoutes = () => {
   return (

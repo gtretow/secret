@@ -1,12 +1,13 @@
 import GlobalStyles from "./styles/GlobalStyles";
-import SignUp from "./Pages/SignUp/SignUp";
+import AppRoutes from "./Routes";
+import { Wrapper } from "./styles/Wrapper";
 
 function App() {
   return (
-    <div>
-      <SignUp />
+    <Wrapper>
       <GlobalStyles />
-    </div>
+      <AppRoutes />
+    </Wrapper>
   );
 }
 
