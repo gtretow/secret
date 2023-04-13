@@ -1,14 +1,20 @@
 import styled from "styled-components";
 import { COLORS } from "../../styles/Constants";
 
-export const Modal = styled.div`
-  z-index: auto;
-  display: ${({ show }) => (show ? "block" : "none")};
+export const ModalWrapper = styled.div`
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;
-  width: 100vw;
-  background: rgba(0, 0, 0, 0.5);
+  right: 0;
+  bottom: 0;
+  background-color: ${COLORS.transparentGray75};
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
+export const ModalContent = styled.div`
+  background-color: ${COLORS.white};
+  padding: 20px;
+  border-radius: 10px;
+`;
