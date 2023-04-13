@@ -1,5 +1,5 @@
 export const COLORS = {
-  primary: "hsl(240deg 100% 60%)",
+  primary: "rgb(118 149 236)",
   cancel: "red",
   confirm: "green",
   primaryLight: "hsl(235deg 100% 62%)",
