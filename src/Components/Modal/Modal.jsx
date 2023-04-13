@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function EditScreen() {
+export default function Modal() {
   return <div>EditScreen</div>;
 }
