@@ -17,4 +17,37 @@ export const ModalContent = styled.div`
   background-color: ${COLORS.white};
   padding: 20px;
   border-radius: 10px;
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ModalHeader = styled.h2`
+  font-size: 18px;
+  margin-bottom: 30px;
+`;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+
+export const TitleInput = styled.input`
+  width: 100%;
+  border-radius: 7px;
+  border: 1px solid ${COLORS.transparentGray75};
+`;
+
+export const ContentInput = styled.input`
+  width: 100%;
+  height: 150px;
+  border-radius: 7px;
+  border: 1px solid ${COLORS.transparentGray75};
+`;
+
+export const InputContainer = styled.div`
+  max-height: 100px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
 `;

@@ -23,11 +23,11 @@ export default function MainScreen() {
       <>
         <button onClick={handleModalOpen}>Open Modal</button>
         {createPortal(
-          <Modal isOpen={modalOpen} onClose={handleModalClose}>
-            <h2>Modal Title</h2>
-            <p>Modal Content</p>
-            <button onClick={handleModalClose}>Close Modal</button>
-          </Modal>,
+          <Modal
+            isOpen={modalOpen}
+            onClose={handleModalClose}
+            onClick={handleModalClose}
+          ></Modal>,
           document.body
         )}
       </>

@@ -39,6 +39,10 @@ const ButtonBase = styled.button`
   border: 2px solid transparent;
   border-radius: 7px;
 
+  &:nth-child(2) {
+    margin-left: 20px;
+  }
+
   &:focus {
     outline-color: ${COLORS.primary};
     outline-offset: 4px;
