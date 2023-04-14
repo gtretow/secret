@@ -13,7 +13,7 @@ const Modal = ({ isOpen, onClose, onClick }) => {
         </S.ModalHeader>
         <S.ButtonWrapper>
           <Button>Cancel</Button>
-          <Button>Delete</Button>
+          <Button color="cancel">Delete</Button>
         </S.ButtonWrapper> */}
 
         <S.ModalHeader>Edit item</S.ModalHeader>
@@ -26,8 +26,10 @@ const Modal = ({ isOpen, onClose, onClick }) => {
           <S.ContentInput />
         </S.InputContainer>
         <S.ButtonWrapper>
-          <Button>Cancel</Button>
-          <Button>Save</Button>
+          <Button variant="outline" color="cancel">
+            Cancel
+          </Button>
+          <Button color="confirm">Save</Button>
         </S.ButtonWrapper>
       </S.ModalContent>
     </S.ModalWrapper>

@@ -4,8 +4,8 @@ import { COLORS } from "../../styles/Constants";
 
 const handleColorType = (color) => {
   switch (color) {
-    case "success":
-      return COLORS.success;
+    case "confirm":
+      return COLORS.confirm;
     case "cancel":
       return COLORS.cancel;
     default:
@@ -21,10 +21,18 @@ const SIZES = {
   },
 };
 
-const Button = ({ color = "", children }) => {
+const Button = ({ variant = "fill", children, color = "primary" }) => {
   const styles = SIZES["small"];
 
-  let Component = FillButton;
+  let Component;
+  if (variant === "fill") {
+    Component = FillButton;
+  } else if (variant === "outline") {
+    Component = OutlineButton;
+  } else {
+    throw new Error(`Unrecognized Button variant: ${variant}`);
+  }
+
   return (
     <Component color={color} style={styles}>
       {children}
@@ -38,6 +46,8 @@ const ButtonBase = styled.button`
   border-radius: var(--borderRadius);
   border: 2px solid transparent;
   border-radius: 7px;
+  width: 8rem;
+  font-weight: bold;
 
   &:nth-child(2) {
     margin-left: 20px;
@@ -47,15 +57,25 @@ const ButtonBase = styled.button`
     outline-color: ${COLORS.primary};
     outline-offset: 4px;
   }
+
+  &:hover {
+    opacity: 0.8;
+  }
 `;
 
 const FillButton = styled(ButtonBase)`
   background-color: ${({ color }) => handleColorType(color)};
   color: ${COLORS.white};
-  width: 8rem;
+`;
+
+const OutlineButton = styled(ButtonBase)`
+  background-color: ${({ color }) => handleColorType(color)};
+  color: ${COLORS.black};
+  background-color: ${COLORS.white};
+  border: 2px solid ${COLORS.transparentGray75};
 
   &:hover {
-    opacity: 0.8;
+    background: ${COLORS.transparentGray15};
   }
 `;
 

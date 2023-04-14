@@ -15,7 +15,7 @@ export default function CreateCard() {
         <S.ContentInput></S.ContentInput>
       </S.InputContainer>
       <S.ButtonContainer>
-        <Button>create</Button>
+        <Button>Create</Button>
       </S.ButtonContainer>
     </S.CardWrapper>
   );
