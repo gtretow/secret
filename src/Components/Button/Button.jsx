@@ -48,6 +48,7 @@ const ButtonBase = styled.button`
   border-radius: 7px;
   width: 8rem;
   font-weight: bold;
+  transition-duration: 0.4s;
 
   &:nth-child(2) {
     margin-left: 20px;
