@@ -22,7 +22,7 @@ export const TitleInput = styled.input`
   border: 1px solid ${COLORS.transparentGray75};
 `;
 
-export const ContentInput = styled.input`
+export const ContentInput = styled.textarea`
   width: 100%;
   height: 150px;
   border-radius: 7px;

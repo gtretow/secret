@@ -21,7 +21,7 @@ const SIZES = {
   },
 };
 
-const Button = ({ variant = "fill", children, color = "primary" }) => {
+const Button = ({ variant = "fill", children, color = "primary", disabled, placeholder }) => {
   const styles = SIZES["small"];
 
   let Component;
@@ -34,7 +34,7 @@ const Button = ({ variant = "fill", children, color = "primary" }) => {
   }
 
   return (
-    <Component color={color} style={styles}>
+    <Component placeholder={placeholder} disabled={disabled} color={color} style={styles}>
       {children}
     </Component>
   );
@@ -49,19 +49,27 @@ const ButtonBase = styled.button`
   width: 8rem;
   font-weight: bold;
   transition-duration: 0.4s;
+  cursor: pointer;
 
   &:nth-child(2) {
     margin-left: 20px;
   }
 
   &:focus {
-    outline-color: ${COLORS.primary};
+    outline-color: inherit;
     outline-offset: 4px;
   }
 
   &:hover {
     opacity: 0.8;
   }
+
+  &:disabled {
+    background-color: ${COLORS.transparentGray75};
+    color: ${COLORS.white };
+    cursor: not-allowed;
+  }
+  
 `;
 
 const FillButton = styled(ButtonBase)`

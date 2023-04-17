@@ -1,17 +1,49 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 
 import * as S from "./styled";
 import PostedCard from "../../Components/PostedCard/PostedCard";
 import CreateCard from "../../Components/CreateCard/CreateCard";
 import Modal from "../../Components/Modal/Modal";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../Redux/userSlice";
+import { getUserPosts } from "../../Actions/axios";
 
-export default function MainScreen() {
+const MainScreen = () => {
   const [modalOpen, setModalOpen] = useState(false);
+  const [posts, setPosts] = useState(false);
+  const [typeOfModal, setTypeOfModal] = useState('');
+  const {username} = useSelector(state => state.user);
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    
+    const fetchPosts = async () => {
+      const response = await getUserPosts();
+      setPosts(response.data);
+    };
+
+    fetchPosts();
+  
+    return () => {
+      console.log('posts =>', posts)
+    }
+  }, [])
+  
+
+
+  const handleLogout = () => {
+    dispatch(logout())
+  }
 
   const handleModalOpen = () => setModalOpen(true);
   const handleModalClose = () => setModalOpen(false);
+  
+  function handleTypeOfModal(type){
+    setTypeOfModal(type);
+  }
 
   return (
     <S.MainScreen>
@@ -19,14 +51,15 @@ export default function MainScreen() {
         <S.WhiteText>CodeLeap Network</S.WhiteText>
       </S.Header>
       <CreateCard />
-      <PostedCard />
+      <PostedCard openModal={handleModalOpen} changeTypeOfModal={handleTypeOfModal} />
       <>
-        <button onClick={handleModalOpen}>Open Modal</button>
         {createPortal(
           <Modal
+            type={typeOfModal}
             isOpen={modalOpen}
             onClose={handleModalClose}
             onClick={handleModalClose}
+            username={username}
           ></Modal>,
           document.body
         )}
@@ -34,3 +67,5 @@ export default function MainScreen() {
     </S.MainScreen>
   );
 }
+
+export default MainScreen
