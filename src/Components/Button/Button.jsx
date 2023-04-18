@@ -21,7 +21,14 @@ const SIZES = {
   },
 };
 
-const Button = ({ variant = "fill", children, color = "primary", disabled, placeholder }) => {
+const Button = ({
+  variant = "fill",
+  children,
+  color = "primary",
+  disabled,
+  placeholder,
+  onClick,
+}) => {
   const styles = SIZES["small"];
 
   let Component;
@@ -34,7 +41,13 @@ const Button = ({ variant = "fill", children, color = "primary", disabled, place
   }
 
   return (
-    <Component placeholder={placeholder} disabled={disabled} color={color} style={styles}>
+    <Component
+      placeholder={placeholder}
+      disabled={disabled}
+      color={color}
+      style={styles}
+      onClick={onClick}
+    >
       {children}
     </Component>
   );
@@ -66,10 +79,9 @@ const ButtonBase = styled.button`
 
   &:disabled {
     background-color: ${COLORS.transparentGray75};
-    color: ${COLORS.white };
+    color: ${COLORS.white};
     cursor: not-allowed;
   }
-  
 `;
 
 const FillButton = styled(ButtonBase)`

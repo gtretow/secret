@@ -8,6 +8,7 @@ export const slice = createSlice({
     },
     reducers: {
       changeUser(state, {payload}) {
+        console.log("mudando isLogged")
         return {...state, isLogged: true, username: payload}
       },
       logout(state) {

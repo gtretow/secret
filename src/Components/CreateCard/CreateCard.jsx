@@ -3,9 +3,9 @@ import React, { useEffect, useRef, useState } from "react";
 import * as S from "./styled";
 import Button from "../../Components/Button/Button";
 import { useSelector } from "react-redux";
-import { getUserPosts } from "../../Actions/axios";
+import { createPost, getUserPosts } from "../../Actions/axios";
 
-const CreateCard = () => {
+function CreateCard() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const { username } = useSelector((state) => state.user);
@@ -36,14 +36,17 @@ const CreateCard = () => {
       content: content,
     };
 
-    await createPost(payload);
+    createPost(payload);
 
-    setTitle("");
-    setContent("");
-
-    await getUserPosts();
+    clearInput();
+    getUserPosts(username);
 
     return;
+  }
+
+  async function clearInput() {
+    await setTitle("");
+    await setContent("");
   }
 
   return (
@@ -76,6 +79,6 @@ const CreateCard = () => {
       </S.ButtonContainer>
     </S.CardWrapper>
   );
-};
+}
 
 export default CreateCard;

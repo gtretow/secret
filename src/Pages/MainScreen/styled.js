@@ -21,6 +21,7 @@ export const Header = styled.header`
   display: flex;
   align-items: center;
   padding-left: 1.5em;
+  justify-content: space-between;
 `;
 
 export const WhiteText = styled.h2`

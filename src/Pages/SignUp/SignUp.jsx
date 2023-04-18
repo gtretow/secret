@@ -3,15 +3,17 @@ import * as S from "./styled";
 import Button from "../../Components/Button/Button";
 import { useDispatch } from "react-redux";
 import { changeUser } from "../../Redux/userSlice";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const dispatch = useDispatch();
   const usernameRef = useRef(null);
 
   const handleLogin = () => {
     dispatch(changeUser(username));
+    navigate("/mainScreen");
   };
 
   async function handleUsername() {
@@ -32,9 +34,7 @@ const SignUp = () => {
         />
       </S.InputBox>
       <S.ButtonContainer>
-        <Link to="/mainScreen">
-          <Button onClick={handleLogin}>ENTER</Button>
-        </Link>
+        <Button onClick={handleLogin}>ENTER</Button>
       </S.ButtonContainer>
     </S.SignUpWrapper>
   );
