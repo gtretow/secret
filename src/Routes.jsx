@@ -1,15 +1,19 @@
 import React from "react";
-import { Route, BrowserRouter, Routes } from "react-router-dom";
+import { Route, BrowserRouter, Routes, redirect } from "react-router-dom";
 import SignUp from "./Pages/SignUp/SignUp.jsx";
 import MainScreen from "./Pages/MainScreen/MainScreen.jsx";
 
-const AppRoutes = () => {
+const AppRoutes = ({ isLogged }) => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route element={<MainScreen />} path="/mainScreen" />
-        <Route element={<SignUp />} exact path="/" />
-        <Route path="*" element={<SignUp to="/" replace />} />
+        <Route
+          render={() =>
+            isLogged === true ? <MainScreen /> : redirect("/login")
+          }
+        />
+        <Route element={<SignUp />} exact path="/login" />
+        <Route path="*" element={<SignUp to="/login" replace />} />
       </Routes>
     </BrowserRouter>
   );

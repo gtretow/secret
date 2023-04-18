@@ -13,35 +13,32 @@ import { getUserPosts } from "../../Actions/axios";
 const MainScreen = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [posts, setPosts] = useState(false);
-  const [typeOfModal, setTypeOfModal] = useState('');
-  const {username} = useSelector(state => state.user);
+  const [typeOfModal, setTypeOfModal] = useState("");
+  const { username } = useSelector((state) => state.user);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    
     const fetchPosts = async () => {
       const response = await getUserPosts();
       setPosts(response.data);
     };
 
     fetchPosts();
-  
-    return () => {
-      console.log('posts =>', posts)
-    }
-  }, [])
-  
 
+    return () => {
+      console.log("posts =>", posts);
+    };
+  }, []);
 
   const handleLogout = () => {
-    dispatch(logout())
-  }
+    dispatch(logout());
+  };
 
   const handleModalOpen = () => setModalOpen(true);
   const handleModalClose = () => setModalOpen(false);
-  
-  function handleTypeOfModal(type){
+
+  function handleTypeOfModal(type) {
     setTypeOfModal(type);
   }
 
@@ -51,7 +48,17 @@ const MainScreen = () => {
         <S.WhiteText>CodeLeap Network</S.WhiteText>
       </S.Header>
       <CreateCard />
-      <PostedCard openModal={handleModalOpen} changeTypeOfModal={handleTypeOfModal} />
+      {posts.map((item) => {
+        return (
+          <PostedCard
+            key={item.id}
+            post={item}
+            openModal={handleModalOpen}
+            changeTypeOfModal={handleTypeOfModal}
+          />
+        );
+      })}
+
       <>
         {createPortal(
           <Modal
@@ -66,6 +73,6 @@ const MainScreen = () => {
       </>
     </S.MainScreen>
   );
-}
+};
 
-export default MainScreen
+export default MainScreen;

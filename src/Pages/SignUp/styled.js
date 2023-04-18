@@ -28,7 +28,6 @@ export const InputBox = styled.div`
 
 export const Input = styled.input`
   border-radius: 7px;
-  color: transparent;
   width: 100%;
   border: 1px solid ${COLORS.black};
 `;
