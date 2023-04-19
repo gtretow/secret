@@ -37,16 +37,17 @@ function CreateCard() {
     };
 
     createPost(payload);
-
     clearInput();
-    getUserPosts(username);
+    refreshContent();
 
     return;
   }
 
-  async function clearInput() {
-    await setTitle("");
-    await setContent("");
+  function clearInput() {
+    setTitle("");
+    setContent("");
+    contentRef.current.value = "";
+    titleRef.current.value = "";
   }
 
   return (

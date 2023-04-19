@@ -1,11 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import * as S from "./styled";
 import Button from "../Button/Button";
 import { deletePost } from "../../Actions/axios";
 import { useState } from "react";
 import { editPost } from "../../Actions/axios";
 
-const Modal = ({ isOpen, onClose, type, data, username }) => {
+const Modal = ({ isOpen, onClose, type, data, username, refreshContent }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const newTitleRef = useRef(null);
@@ -21,6 +21,7 @@ const Modal = ({ isOpen, onClose, type, data, username }) => {
       content: content,
     };
     await editPost(data.id, payload);
+    refreshContent();
     onClose();
   }
 
@@ -37,6 +38,7 @@ const Modal = ({ isOpen, onClose, type, data, username }) => {
 
   async function handleDeletePost() {
     deletePost(data.id);
+    refreshContent();
     onClose();
     return;
   }
