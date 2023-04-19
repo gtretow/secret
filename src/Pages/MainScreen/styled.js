@@ -28,3 +28,12 @@ export const WhiteText = styled.h2`
   color: ${COLORS.white};
   font-size: 18px;
 `;
+
+export const LoadingContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+`;

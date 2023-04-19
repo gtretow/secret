@@ -33,7 +33,6 @@ export async function editPost(itemId, payload) {
 }
 
 export async function deletePost(itemId) {
-  console.log(itemId);
   try {
     await axios.delete(`https://dev.codeleap.co.uk/careers/${itemId}/`);
   } catch (e) {

@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import * as S from "./styled";
 import Button from "../../Components/Button/Button";
 import { useSelector } from "react-redux";
-import { createPost, getUserPosts } from "../../Actions/axios";
+import { createPost } from "../../Actions/axios";
 
 function CreateCard() {
   const [title, setTitle] = useState("");

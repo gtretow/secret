@@ -11,6 +11,8 @@ import { logout } from "../../Redux/userSlice";
 import { getUserPosts } from "../../Actions/axios";
 import Button from "../../Components/Button/Button";
 import { useNavigate } from "react-router-dom";
+import { Circles } from "react-loader-spinner";
+import { COLORS } from "../../styles/Constants";
 
 const MainScreen = () => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -18,9 +20,13 @@ const MainScreen = () => {
   const [postToBeEdited, setPostToBeEdited] = useState({});
   const [typeOfModal, setTypeOfModal] = useState("");
   const { username } = useSelector((state) => state.user);
+  const [showSpinner, setShowSpinner] = useState(false);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  async function sleep(ms) {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
   useEffect(() => {
     try {
       refreshPage();
@@ -29,7 +35,10 @@ const MainScreen = () => {
     }
   }, []);
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    setShowSpinner(true);
+    await sleep(3000);
+    setShowSpinner(false);
     dispatch(logout());
     navigate("/login");
   };
@@ -56,35 +65,51 @@ const MainScreen = () => {
   }
 
   return (
-    <S.MainScreen>
-      <S.Header>
-        <S.WhiteText>CodeLeap Network</S.WhiteText>
-        <Button onClick={handleLogout}>Logout</Button>
-      </S.Header>
-      <CreateCard refreshContent={refreshPage} />
-      {posts.map((item) => {
-        return (
-          <PostedCard
-            key={item.id}
-            post={item}
-            openModal={handleModalOpen}
-            changeTypeOfModal={handleTypeOfModal}
-            onData={handleChildData}
+    <>
+      {showSpinner ? (
+        <S.LoadingContainer>
+          <Circles
+            height="80"
+            width="80"
+            radius="9"
+            color={COLORS.primary}
+            ariaLabel="loading"
+            wrapperStyle
+            wrapperClass
           />
-        );
-      })}
-      {createPortal(
-        <Modal
-          type={typeOfModal}
-          isOpen={modalOpen}
-          onClose={handleModalClose}
-          username={username}
-          data={postToBeEdited}
-          refreshContent={refreshPage}
-        ></Modal>,
-        document.body
+        </S.LoadingContainer>
+      ) : (
+        <S.MainScreen>
+          <S.Header>
+            <S.WhiteText>CodeLeap Network</S.WhiteText>
+            <Button onClick={handleLogout}>Logout</Button>
+          </S.Header>
+          <CreateCard refreshContent={refreshPage} />
+          {posts?.map((item) => {
+            return (
+              <PostedCard
+                key={item.id}
+                post={item}
+                openModal={handleModalOpen}
+                changeTypeOfModal={handleTypeOfModal}
+                onData={handleChildData}
+              />
+            );
+          })}
+          {createPortal(
+            <Modal
+              type={typeOfModal}
+              isOpen={modalOpen}
+              onClose={handleModalClose}
+              username={username}
+              data={postToBeEdited}
+              refreshContent={refreshPage}
+            ></Modal>,
+            document.body
+          )}
+        </S.MainScreen>
       )}
-    </S.MainScreen>
+    </>
   );
 };
 

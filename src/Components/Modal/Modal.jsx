@@ -1,9 +1,8 @@
 import React, { useRef } from "react";
 import * as S from "./styled";
 import Button from "../Button/Button";
-import { deletePost } from "../../Actions/axios";
 import { useState } from "react";
-import { editPost } from "../../Actions/axios";
+import { editPost, deletePost } from "../../Actions/axios";
 
 const Modal = ({ isOpen, onClose, type, data, username, refreshContent }) => {
   const [title, setTitle] = useState("");
