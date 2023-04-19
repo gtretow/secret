@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { COLORS } from "../../styles/Constants";
 
-export const MainScreen = styled.div`
+export const MainScreen = styled.main`
   width: 50vw;
   height: 100vh;
   position: fixed;
@@ -9,7 +9,7 @@ export const MainScreen = styled.div`
   left: 50%;
   background: ${COLORS.white};
   transform: translate(-50%, -50%);
-  box-shadow: 1px 1px ${COLORS.transparentGray15};
+  box-shadow: 1px 1px ${COLORS.borderbox};
   display: flex;
   flex-direction: column;
 `;
@@ -36,4 +36,11 @@ export const LoadingContainer = styled.div`
   flex-direction: column;
   width: 100vw;
   height: 100vh;
+`;
+
+export const ScrolContainer = styled.section`
+  height: 100vh;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  scrollbar-color: ${COLORS.primary} ${COLORS.white};
 `;

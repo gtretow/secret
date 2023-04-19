@@ -3,15 +3,15 @@ import { COLORS } from "../../styles/Constants";
 
 export const SignUpWrapper = styled.div`
   width: 550px;
-  height: 220px;
+  min-height: 220px;
   position: fixed;
   top: 50%;
   left: 50%;
   background: ${COLORS.white};
   transform: translate(-50%, -50%);
-  border: 1px solid ${COLORS.offwhite};
+  border: 1px solid ${COLORS.transparentGray15};
   border-radius: 7px;
-  box-shadow: 1px 1px ${COLORS.transparentGray15};
+  box-shadow: 1px 1px ${COLORS.borderbox};
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -20,6 +20,7 @@ export const SignUpWrapper = styled.div`
 
 export const PrimaryText = styled.h1`
   margin-bottom: 0.7rem;
+  font-size: 22px;
 `;
 
 export const InputBox = styled.div`
@@ -29,11 +30,11 @@ export const InputBox = styled.div`
 export const Input = styled.input`
   border-radius: 7px;
   width: 100%;
-  border: 1px solid ${COLORS.black};
+  border: 1px solid ${COLORS.gray};
 `;
 
 export const Text = styled.p`
-  font-size: 18px;
+  font-size: 16px;
   margin-bottom: 0.3rem;
 `;
 

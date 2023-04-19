@@ -5,7 +5,7 @@ import Button from "../../Components/Button/Button";
 import { useSelector } from "react-redux";
 import { createPost } from "../../Actions/axios";
 
-function CreateCard() {
+function CreateCard({ refreshContent }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const { username } = useSelector((state) => state.user);

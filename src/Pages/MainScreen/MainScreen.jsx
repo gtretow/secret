@@ -21,19 +21,25 @@ const MainScreen = () => {
   const [typeOfModal, setTypeOfModal] = useState("");
   const { username } = useSelector((state) => state.user);
   const [showSpinner, setShowSpinner] = useState(false);
+  const [page, setPage] = useState(1);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
   async function sleep(ms) {
     return new Promise((resolve) => setTimeout(resolve, ms));
   }
+
   useEffect(() => {
-    try {
-      refreshPage();
-    } catch (e) {
-      console.error(e);
+    // Load more data when the page number changes
+    refreshPage();
+  }, [page]);
+
+  function handleScroll(event) {
+    const { scrollTop, clientHeight, scrollHeight } = event.target;
+    if (scrollTop + clientHeight >= scrollHeight) {
+      setPage((prevPage) => prevPage + 1);
     }
-  }, []);
+  }
 
   const handleLogout = async () => {
     setShowSpinner(true);
@@ -85,17 +91,23 @@ const MainScreen = () => {
             <Button onClick={handleLogout}>Logout</Button>
           </S.Header>
           <CreateCard refreshContent={refreshPage} />
-          {posts?.map((item) => {
-            return (
-              <PostedCard
-                key={item.id}
-                post={item}
-                openModal={handleModalOpen}
-                changeTypeOfModal={handleTypeOfModal}
-                onData={handleChildData}
-              />
-            );
-          })}
+          <S.ScrolContainer
+            id="content"
+            onScroll={(event) => handleScroll(event)}
+          >
+            {posts?.map((item) => {
+              return (
+                <PostedCard
+                  key={item.id}
+                  post={item}
+                  openModal={handleModalOpen}
+                  changeTypeOfModal={handleTypeOfModal}
+                  onData={handleChildData}
+                  loggedUser={username}
+                />
+              );
+            })}
+          </S.ScrolContainer>
           {createPortal(
             <Modal
               type={typeOfModal}

@@ -81,7 +81,9 @@ const Modal = ({ isOpen, onClose, type, data, username, refreshContent }) => {
               Are you sure you want to delete this item?
             </S.ModalHeader>
             <S.ButtonWrapper>
-              <Button onClick={onClose}>Cancel</Button>
+              <Button onClick={onClose} variant="outline">
+                Cancel
+              </Button>
               <Button color="cancel" onClick={handleDeletePost}>
                 Delete
               </Button>

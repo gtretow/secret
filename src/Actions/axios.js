@@ -7,9 +7,7 @@ export async function getUserPosts(userId) {
   } catch (e) {
     console.error("an error ocurred", e);
   }
-  const userPosts = response.data.results.filter(
-    (item) => item.username.toLowerCase() == userId.toLowerCase()
-  );
+  const userPosts = response.data.results;
   return userPosts;
 }
 

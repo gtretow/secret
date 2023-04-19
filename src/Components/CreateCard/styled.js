@@ -3,29 +3,29 @@ import { COLORS } from "../../styles/Constants";
 
 export const BlackText = styled.h2`
   color: ${COLORS.black};
-  font-size: 18px;
+  font-size: 22px;
   margin: 3% 0 3% 0;
 `;
 
 export const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  border: 2px solid ${COLORS.gray};
-  border-radius: 10px;
+  border: 1px solid ${COLORS.gray};
+  border-radius: 8px;
   margin: 0 3% 3% 3%;
   padding: 0 3% 0 3%;
 `;
 
 export const TitleInput = styled.input`
   width: 100%;
-  border-radius: 7px;
+  border-radius: 8px;
   border: 1px solid ${COLORS.transparentGray75};
 `;
 
 export const ContentInput = styled.textarea`
   width: 100%;
   height: 150px;
-  border-radius: 7px;
+  border-radius: 8px;
   border: 1px solid ${COLORS.transparentGray75};
 `;
 
@@ -41,4 +41,5 @@ export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+  font-size: 16px;
 `;

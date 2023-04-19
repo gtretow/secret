@@ -23,7 +23,7 @@ export const ModalContent = styled.div`
 `;
 
 export const ModalHeader = styled.h2`
-  font-size: 18px;
+  font-size: 22px;
   margin-bottom: 30px;
 `;
 
@@ -34,14 +34,14 @@ export const ButtonWrapper = styled.div`
 
 export const TitleInput = styled.input`
   width: 100%;
-  border-radius: 7px;
+  border-radius: 8px;
   border: 1px solid ${COLORS.transparentGray75};
 `;
 
 export const ContentInput = styled.textarea`
   width: 100%;
   height: 150px;
-  border-radius: 7px;
+  border-radius: 8px;
   border: 1px solid ${COLORS.transparentGray75};
 `;
 

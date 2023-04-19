@@ -15,7 +15,7 @@ const handleColorType = (color) => {
 
 const SIZES = {
   small: {
-    "--borderRadius": 2 + "px",
+    "--borderRadius": 8 + "px",
     "--fontSize": 16 / 16 + "rem",
     "--padding": "6px 12px",
   },
@@ -58,7 +58,7 @@ const ButtonBase = styled.button`
   padding: var(--padding);
   border-radius: var(--borderRadius);
   border: 2px solid transparent;
-  border-radius: 7px;
+  border-radius: 8px;
   width: 8rem;
   font-weight: bold;
   transition-duration: 0.4s;

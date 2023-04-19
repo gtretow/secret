@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { COLORS } from "../../styles/Constants";
 
-export const PostWrapper = styled.div`
+export const PostWrapper = styled.article`
   display: flex;
   flex-direction: column;
   border-radius: 10px;
@@ -14,11 +14,13 @@ export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  border-left: 2px solid ${COLORS.gray};
-  border-right: 2px solid ${COLORS.gray};
-  border-bottom: 2px solid ${COLORS.gray};
+  border-left: 1px solid ${COLORS.gray};
+  border-right: 1px solid ${COLORS.gray};
+  border-bottom: 1px solid ${COLORS.gray};
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
+  font-size: 18px;
+  font-weight: 400;
 `;
 
 export const IconWrapper = styled.div`
@@ -39,7 +41,7 @@ export const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   padding-left: 1.5em;
-  border: 2px solid ${COLORS.primary};
+  border: 1px solid ${COLORS.transparentGray15};
   justify-content: space-between;
 `;
 
@@ -49,6 +51,7 @@ export const NameWrapper = styled.div`
   margin: 0 3% 3% 3%;
   color: ${COLORS.gray};
   font-weight: bold;
+  font-size: 18px;
 `;
 
 export const TextWrapper = styled.div`
@@ -58,7 +61,7 @@ export const TextWrapper = styled.div`
 export const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  border: 2px solid ${COLORS.gray};
+  border: 1px solid ${COLORS.gray};
   border-radius: 10px;
   margin: 0 3% 3% 3%;
   padding: 0 3% 0 3%;
@@ -66,5 +69,19 @@ export const CardWrapper = styled.div`
 
 export const WhiteText = styled.h2`
   color: ${COLORS.white};
-  font-size: 18px;
+  font-size: 22px;
+`;
+
+export const TextBox = styled.div`
+  width: 87%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+`;
+
+export const NameBox = styled.div`
+  width: 50%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `;
