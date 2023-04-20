@@ -20,6 +20,13 @@ export const ModalContent = styled.div`
   width: 45%;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 767px) {
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const ModalHeader = styled.h2`
@@ -50,4 +57,8 @@ export const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 20px;
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;

@@ -12,6 +12,11 @@ export const MainScreen = styled.main`
   box-shadow: 1px 1px ${COLORS.borderbox};
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 767px) {
+    max-width: 100%;
+    width: 100%;
+  }
 `;
 
 export const Header = styled.header`

@@ -14,6 +14,11 @@ export const CardWrapper = styled.div`
   border-radius: 8px;
   margin: 0 3% 3% 3%;
   padding: 0 3% 0 3%;
+
+  @media (max-width: 767px) {
+    align-items: center;
+    text-align: center;
+  }
 `;
 
 export const TitleInput = styled.input`
@@ -42,4 +47,8 @@ export const InputContainer = styled.div`
   flex-direction: column;
   margin-bottom: 20px;
   font-size: 16px;
+
+  @media (max-width: 767px) {
+    width: 100%;
+  }
 `;

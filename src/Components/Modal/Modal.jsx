@@ -1,12 +1,18 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import * as S from "./styled";
 import Button from "../Button/Button";
 import { useState } from "react";
 import { editPost, deletePost } from "../../Actions/axios";
 
-const Modal = ({ isOpen, onClose, type, data, username, refreshContent }) => {
+const Modal = ({ isOpen, onClose, type, data, refreshContent }) => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
+  const [isInputChanged, setIsInputChanged] = useState(false);
+
+  useEffect(() => {
+    setIsInputChanged(title && content !== "");
+  }, [content, title]);
+
   const newTitleRef = useRef(null);
   const newContentRef = useRef(null);
 
@@ -15,10 +21,10 @@ const Modal = ({ isOpen, onClose, type, data, username, refreshContent }) => {
   async function handleEditPost() {
     let payload;
     payload = {
-      username: username,
-      title: title,
-      content: content,
+      title: String(title),
+      content: String(content),
     };
+
     await editPost(data.id, payload);
     refreshContent();
     onClose();
@@ -54,6 +60,8 @@ const Modal = ({ isOpen, onClose, type, data, username, refreshContent }) => {
                 ref={newTitleRef}
                 type="text"
                 onChange={handleNewTitle}
+                placeholder="Hello World"
+                defaultValue={data.title}
               />
             </S.InputContainer>
             <S.InputContainer>
@@ -62,13 +70,19 @@ const Modal = ({ isOpen, onClose, type, data, username, refreshContent }) => {
                 ref={newContentRef}
                 type="text"
                 onChange={handleNewContent}
+                placeholder="Content"
+                defaultValue={data.content}
               />
             </S.InputContainer>
             <S.ButtonWrapper>
               <Button variant="outline" color="cancel" onClick={onClose}>
                 Cancel
               </Button>
-              <Button color="confirm" onClick={handleEditPost}>
+              <Button
+                color="confirm"
+                onClick={handleEditPost}
+                disabled={!isInputChanged}
+              >
                 Save
               </Button>
             </S.ButtonWrapper>
