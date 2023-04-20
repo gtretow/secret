@@ -31,7 +31,7 @@ const SignUp = () => {
 
   return (
     <>
-      {showSpinner ? (
+      {showSpinner == 1 ? (
         <S.LoadingContainer>
           <Circles
             height="80"

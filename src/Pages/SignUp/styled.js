@@ -49,14 +49,14 @@ export const InputBox = styled.div`
     flex-direction: column;
     height: 5em;
   }
-
-  
 `;
 
 export const Input = styled.input`
   border-radius: 7px;
   width: 100%;
+  height: 60%;
   border: 1px solid ${COLORS.gray};
+  font-size: 14px;
 
   @media (max-width: 767px) {
     height: 100%;

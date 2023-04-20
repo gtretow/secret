@@ -30,7 +30,6 @@ const MainScreen = () => {
   }
 
   useEffect(() => {
-    // Load more data when the page number changes
     refreshPage();
   }, [page]);
 
